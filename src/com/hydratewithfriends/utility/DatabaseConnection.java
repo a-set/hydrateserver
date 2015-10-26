@@ -22,9 +22,9 @@ public class DatabaseConnection {
 	 */
 	public boolean makeConnection() {
 
-		String url = "jdbc:mysql://localhost:3306/hydratewithfriends";
+		String url = "jdbc:mysql://localhost:3306/hydratedb";
 		String user = "root";
-		String password = "Ichbin12";
+		String password = "inf241";
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
