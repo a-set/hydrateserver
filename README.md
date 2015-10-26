@@ -10,8 +10,12 @@ Whenever a user pours water into a glass kept on a smart coaster, the arduino ch
 1. amount (the amount of water the user has had in Litres)
 2. timestamp (the time at which the event was recorded) [ this is not handled at the moment with this back-end service but will be added soon] 
 
-How to use this service ?
+How to use this service ? 
 ========================
+First ensure the service is started (refer to word doc shared for this)
+ 
+then perform the following steps
+
 The service is located at  (Server-domain-name must have been shared with you personally)
 [http://ec2-54-149-10-130.us-west-2.compute.amazonaws.com:8080/hydrateserver/sendHydrationData](http://ec2-54-149-10-130.us-west-2.compute.amazonaws.com:8080/hydrateserver/sendHydrationData)
 
