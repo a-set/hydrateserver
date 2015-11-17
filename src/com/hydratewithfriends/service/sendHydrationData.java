@@ -24,7 +24,7 @@ public class sendHydrationData extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		out.println("<html>" + "<body>" + 
-		"<h1 align=center>chapter</h1>" + "</body>" + "</html>");
+		"<h1 align=center>Use this service URL to make a POST request with parameters \"amount\"</h1>" + "</body>" + "</html>");
 	}
 
 	/**
