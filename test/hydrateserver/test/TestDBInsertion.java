@@ -12,7 +12,7 @@ public class TestDBInsertion {
 	public void test() {
 		DatabaseConnection dbConn = new DatabaseConnection();
 		dbConn.makeConnection();
-		assertTrue(dbConn.insertInto(100l, System.currentTimeMillis()));
+		assertTrue(dbConn.insertInto(46l,100l, System.currentTimeMillis()));
 	}
 
 }

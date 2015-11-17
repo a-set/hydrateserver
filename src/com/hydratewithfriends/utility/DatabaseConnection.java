@@ -1,6 +1,7 @@
 package com.hydratewithfriends.utility;
 
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.Connection;
@@ -13,6 +14,7 @@ public class DatabaseConnection {
 	 */
 	Connection con = null;
 	PreparedStatement pst = null;
+	ResultSet rs =null;
 
 	/**
 	 * This method makes a connection to the MySQL server
@@ -48,7 +50,7 @@ public class DatabaseConnection {
 	 * @return Returns true if the Db store the value and false if there was a
 	 *         connection problem
 	 */
-	public boolean insertInto(Long amount, Long time) {
+	public boolean insertInto(Long i,Long amount, Long time) {
 		try {
 			pst = (PreparedStatement) con.prepareStatement("INSERT INTO water_data VALUES (?,?)");
 			pst.setLong(1, amount);
@@ -61,6 +63,22 @@ public class DatabaseConnection {
 		} finally {
 			terminateGracefully();
 		}
+	}
+	
+	/**
+	 * Queries the table to get the number of rows already in the table
+	 */
+	
+	public Long getNoOfRows(){
+		try{
+			 rs = pst.executeQuery("SELECT COUNT(*) FROM water_data");
+			 return rs.getLong(0);
+		}catch(SQLException e){
+			System.out.println(e);
+		}finally{
+			terminateGracefully();
+		}
+		return -1l;
 	}
 
 	public void terminateGracefully() {

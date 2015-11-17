@@ -39,9 +39,11 @@ public class sendHydrationData extends HttpServlet {
 		
 		//Make DB connection
 		DatabaseConnection dbConn = new DatabaseConnection();
-		if(dbConn.makeConnection())
+		if(dbConn.makeConnection()){
 			//Insert into a MySql table
-			dbConn.insertInto(amountOfWater,(long)System.currentTimeMillis()/1000);
+			Long p = dbConn.getNoOfRows();
+			dbConn.insertInto(p+1,amountOfWater,(long)System.currentTimeMillis()/1000);
+			}
 		}
 		catch(NumberFormatException exception){
 			//TODO handler it
