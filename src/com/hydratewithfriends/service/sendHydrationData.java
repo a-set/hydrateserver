@@ -34,15 +34,14 @@ public class sendHydrationData extends HttpServlet {
 		
 		//Get the parameters from request
 		try{
-		Long amountOfWater = Long.valueOf(request.getParameter("amount"));
+		Double amountOfWater = Double.valueOf(request.getParameter("amount"));
 		//Long duration = Long.valueOf(request.getParameter("Duration"));
 		
 		//Make DB connection
 		DatabaseConnection dbConn = new DatabaseConnection();
 		if(dbConn.makeConnection()){
 			//Insert into a MySql table
-			Long p = dbConn.getNoOfRows();
-			dbConn.insertInto(p+1,amountOfWater,(long)System.currentTimeMillis()/1000);
+			dbConn.insertInto(amountOfWater,(long)System.currentTimeMillis()/1000);
 			}
 		}
 		catch(NumberFormatException exception){

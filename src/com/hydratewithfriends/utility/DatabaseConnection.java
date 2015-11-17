@@ -50,10 +50,10 @@ public class DatabaseConnection {
 	 * @return Returns true if the Db store the value and false if there was a
 	 *         connection problem
 	 */
-	public boolean insertInto(Long i,Long amount, Long time) {
+	public boolean insertInto(Double amount, Long time) {
 		try {
-			pst = (PreparedStatement) con.prepareStatement("INSERT INTO water_data VALUES (?,?)");
-			pst.setLong(1, amount);
+			pst = (PreparedStatement) con.prepareStatement("INSERT INTO water_data(amount,time) VALUES (?,?)");
+			pst.setDouble(1, amount);
 			pst.setLong(2, time);
 			pst.executeUpdate();
 			return true;
@@ -64,23 +64,6 @@ public class DatabaseConnection {
 			terminateGracefully();
 		}
 	}
-	
-	/**
-	 * Queries the table to get the number of rows already in the table
-	 */
-	
-	public Long getNoOfRows(){
-		try{
-			 rs = pst.executeQuery("SELECT COUNT(*) FROM water_data");
-			 return rs.getLong(0);
-		}catch(SQLException e){
-			System.out.println(e);
-		}finally{
-			terminateGracefully();
-		}
-		return -1l;
-	}
-
 	public void terminateGracefully() {
 		try {
 			if (pst != null) {
